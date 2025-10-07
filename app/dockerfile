@@ -1,0 +1,22 @@
+# Użyj oficjalnego obrazu Apache z obsługą PHP
+FROM php:7.4-apache
+
+# Skopiuj pliki strony do katalogu głównego Apache
+COPY . /var/www/html/
+
+# Włącz moduł Apache do przepisywania URL-i (jeśli byłby potrzebny)
+# RUN a2enmod rewrite
+
+# Włącz moduł do obsługi SSL (jeśli byłby potrzebny)
+# RUN a2enmod ssl
+
+# Install PDO and PDO_MYSQL extensions for PHP
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Daj uprawnienia do zapisu w katalogu /var/www/html,
+# co jest wymagane przez plik messages.txt
+# W środowisku produkcyjnym nie jest to zalecane.
+RUN chown -R www-data:www-data /var/www/html/
+
+# Uruchomienie serwera Apache
+CMD ["apache2-foreground"]

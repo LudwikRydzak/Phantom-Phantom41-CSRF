@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST">
+            <label for="login">Username:</label>
+            <input type="text" id="login" name="login" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="error-message">
+            <?php if(isset($_GET['error'])) echo htmlspecialchars($_GET['error']); ?>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.html');
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosty Czat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Prosty Czat</h1>
+        <div id="chat-messages" class="chat-messages">
+        </div>
+        <form id="message-form" class="message-form">
+            <textarea id="message-input" placeholder="Wpisz wiadomość..." required></textarea>
+            <button type="submit">Wyślij</button>
+        </form>
+        <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
+        <a href="admin_panel.php" style="display:block;margin:10px 0;">Admin Panel</a>
+        <?php endif; ?>
+        <form action="logout.php" method="POST" style="margin-top:10px;">
+            <button type="submit">Wyloguj</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
