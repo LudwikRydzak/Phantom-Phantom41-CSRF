@@ -26,7 +26,6 @@ services:
     ports:
       - "18443:80"
     volumes:
-      - ./app/csrf.html:/var/www/html/csrf.html
-      - ./app/csrf.html:/var/www/html/index.html
+      - ./csrfweb/csrf.html:/var/www/html/index.html
 volumes:
   db_data:
