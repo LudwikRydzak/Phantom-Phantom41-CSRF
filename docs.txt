@@ -1,0 +1,7 @@
+Adding admin:
+docker exec -i $(docker ps --filter 'name=phantom41-csrf_db' --format '{{.ID}}') mysql -u root -prootpass phantom_chat -e "INSERT INTO users (login, password, isAdmin, created_at, updated_at) VALUES ('Andrzej', '123', 1, NOW(), NOW());"
+
+sudo docker exec -i $(sudo docker ps --filter 'name=phantom41-csrf_db' --format '{{.ID}}') \
+  mysql -u root -prootpass phantom_chat \
+  -e "INSERT INTO users (login, password, isAdmin, created_at, updated_at) VALUES ('Andrzej', '123', 1, NOW(), NOW());"
+  
